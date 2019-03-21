@@ -49,6 +49,9 @@ namespace PlayingCardsDeck
             // (each iteration Random.Next() provides a new random int for the key)
             // in other words the currentNumber value is ignored when it comes to OrderBy and
             // the Random.Next() int key will be use to sort the array
+            //
+            // NOTE: You can also use Guid.NewGuid() for the key to sort as well as Random.Next(),
+            // and I'm guessing Guid.NewGuid() would be a better option then Random.Next()
             return list.OrderBy(currentNumber => Random.Next()).ToList().ShuffleLoop(numberOfPassesLimit.Value, numberOfPassesCounter + 1);
         }
 
@@ -88,6 +91,7 @@ namespace PlayingCardsDeck
         /// <param name="list">Represents the <paramref name="list"/> that will used to be shuffled</param>
         /// <param name="numberOfPasses">Determines many times the <paramref name="list"/> will be shuffled</param>
         /// <returns>Returns a shuffled List</returns>
+        [Obsolete]
         public static List<T> OldShuffle<T>(this List<T> list, int numberOfPasses = 1)
         {
             int currentIndex = list.Count, randomIndex, counter = 0;

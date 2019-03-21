@@ -29,5 +29,7 @@
             Name = name;
             Suit = suit;
         }
+
+        public override string ToString() => $"{Name} - {Suit} - {Value}";
     }
 }

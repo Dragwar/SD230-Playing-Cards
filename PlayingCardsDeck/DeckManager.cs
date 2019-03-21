@@ -127,5 +127,15 @@ namespace PlayingCardsDeck
 
             return playingCards;
         }
+
+
+        public void DisplayDeckInfo()
+        {
+            Console.WriteLine($"Total Cards: {Deck.Count}");
+            Console.WriteLine($"Total Spades: {Deck.Count(card => card.Suit == SuitEnum.Spades)}");
+            Console.WriteLine($"Total Clubs: {Deck.Count(card => card.Suit == SuitEnum.Clubs)}");
+            Console.WriteLine($"Total Diamonds: {Deck.Count(card => card.Suit == SuitEnum.Diamonds)}");
+            Console.WriteLine($"Total Hearts: {Deck.Count(card => card.Suit == SuitEnum.Hearts)}");
+        }
     }
 }
