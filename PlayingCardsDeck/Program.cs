@@ -13,6 +13,7 @@ namespace PlayingCardsDeck
             b.Reverse();
             b.ToArray().Display();
             int[] a = b.ToArray().Shuffle().Display();
+            Console.ReadLine();
         }
     }
 }
