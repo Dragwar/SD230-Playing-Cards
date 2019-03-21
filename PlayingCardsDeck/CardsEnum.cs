@@ -4,6 +4,9 @@ using System.Text;
 
 namespace PlayingCardsDeck
 {
+    /// <summary>
+    ///     Represents the playing card value associated with its card name
+    /// </summary>
     public enum CardsEnum
     {
         Ace = 1,

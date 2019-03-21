@@ -8,6 +8,8 @@ namespace PlayingCardsDeck
     {
         static void Main()
         {
+            Console.Title = "Deck consists of: (52 total playing cards), (4 suits), (13 playing cards per suit)";
+
             Deck deck = new Deck();
             foreach (var item in deck.Cards)
             {
@@ -15,7 +17,9 @@ namespace PlayingCardsDeck
             }
             Console.WriteLine();
 
-            Console.ReadLine();
+            // Tests go here for now
+
+            Console.ReadKey(false);
         }
     }
 }

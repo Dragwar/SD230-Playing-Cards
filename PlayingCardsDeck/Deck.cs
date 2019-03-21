@@ -5,6 +5,15 @@ using System.Runtime.InteropServices;
 
 namespace PlayingCardsDeck
 {
+    /// <summary>
+    ///     <para/>Holds Cards that can be dealt and shuffled,
+    ///     <para/>Static SortedPlayingCards represents the Cards before it got shuffled
+    ///     <para/>Classes Actions:
+    ///     <para/>- Cards will be shuffled on Deck creation
+    ///     <para/>- Cards can be shuffled after Deck creation
+    ///     <para/>- Cards can be dealt one at a time
+    ///     <para/>- Cards can be dealt all at once
+    /// </summary>
     public class Deck
     {
         public Deck(int numberOfInitialShuffles = 5)

@@ -17,20 +17,20 @@ namespace PlayingCardsDeck
         private static Random Random { get; } = new Random();
 
         /// <summary>
-        ///     <para/>I'm trying out recursion to shuffle the arr multiple times
-        ///     <para/>This method will default to 5 passes (array gets shuffled 5 times)
+        ///     <para/>I'm trying out recursion to shuffle the <paramref name="list"/> multiple times
+        ///     <para/>This method will default to 5 passes (<paramref name="list"/> gets shuffled 5 times)
         /// </summary>
         /// <param name="list">
-        ///     Represents the array that will be shuffled
+        ///     Represents the list that will be shuffled
         /// </param>
         /// <param name="numberOfPassesLimit">
-        ///     Determines many times the array will be shuffled
+        ///     Determines many times the <paramref name="list"/> will be shuffled
         /// </param>
         /// <param name="numberOfPassesCounter">
         ///     Counts the number of times this function gets invoked (similar to i in for...loops)
         /// </param>
         /// <returns>
-        ///     Shuffled int array
+        ///     Shuffled int <paramref name="list"/>
         /// </returns>
         private static List<T> ShuffleLoop<T>(this List<T> list, int? numberOfPassesLimit, int numberOfPassesCounter = 0)
         {
@@ -53,17 +53,17 @@ namespace PlayingCardsDeck
         }
 
         /// <summary>
-        ///     Only using this to prevent user/dev from
-        ///     changing numberOfPassesCounter parameter
+        ///     Only using this to prevent user/developer from
+        ///     changing <paramref name="numberOfPassesLimit"/> parameter
         /// </summary>
         /// <param name="list">
-        ///     Represents the array that will be shuffled
+        ///     Represents the <paramref name="list"/> that will be shuffled
         /// </param>
         /// <param name="numberOfPassesLimit">
-        ///     Determines many times the array will be shuffled
+        ///     Determines many times the <paramref name="list"/> will be shuffled
         /// </param>
         /// <returns>
-        ///     Fully shuffled int array
+        ///     Fully shuffled int <paramref name="list"/>
         /// </returns>
         public static List<T> Shuffle<T>(this List<T> list, [Optional] int? numberOfPassesLimit)
         {
@@ -82,11 +82,11 @@ namespace PlayingCardsDeck
 
         /// <summary>
         ///     <para/>Got this function from my Old JavaScript SD110 Final Project (memory card game)
-        ///     <para/>I only added on a numberOfPasses functionality
+        ///     <para/>I only added on a numberOfPasses functionality recently
         /// </summary>
-        /// <typeparam name="T">Represents the type of element in List</typeparam>
-        /// <param name="list">Represents the list that will used to be shuffled</param>
-        /// <param name="numberOfPasses">Determines many times the array will be shuffled</param>
+        /// <typeparam name="T">Represents the type of element in <paramref name="list"/></typeparam>
+        /// <param name="list">Represents the <paramref name="list"/> that will used to be shuffled</param>
+        /// <param name="numberOfPasses">Determines many times the <paramref name="list"/> will be shuffled</param>
         /// <returns></returns>
         public static List<T> OldShuffle<T>(this List<T> list, int numberOfPasses = 1)
         {
@@ -110,15 +110,19 @@ namespace PlayingCardsDeck
 
 
         /// <summary>
-        ///     Simple Method to display an array of integers
+        ///     Simple Method to display an <paramref name="list"/> of <typeparamref name="T"/>
         ///     on one line in the console
         /// </summary>
         /// <param name="list">
-        ///     Array that will have its elements
+        ///     <paramref name="list"/> that will have its elements
         ///     displayed in the console
         /// </param>
+        /// <param name="isWriteLine">
+        ///     Determines whether or not to display elements in one line
+        ///     or to print a new line for each element
+        /// </param>
         /// <returns>
-        ///     Returns passed in array
+        ///     Returns passed in <paramref name="list"/>
         /// </returns>
         public static List<T> Display<T>(this List<T> list, bool isWriteLine = false)
         {
