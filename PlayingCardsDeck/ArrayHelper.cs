@@ -12,13 +12,13 @@ namespace PlayingCardsDeck
         ///     this is a property because Random
         ///     produces random numbers based on the
         ///     seed (seed is made by the current DateTime)
-        ///     (in other words this is just for random consistency)
+        ///     <para/>(in other words this is just for randomness consistency)
         /// </summary>
         private static Random Random { get; } = new Random();
 
         /// <summary>
-        ///     I'm trying out recursion to shuffle the arr multiple times.
-        ///     This method will default to 5 passes (array gets shuffled 5 times)
+        ///     <para/>I'm trying out recursion to shuffle the arr multiple times
+        ///     <para/>This method will default to 5 passes (array gets shuffled 5 times)
         /// </summary>
         /// <param name="list">
         ///     Represents the array that will be shuffled
@@ -79,26 +79,33 @@ namespace PlayingCardsDeck
             return list.ShuffleLoop(numberOfPassesLimit);
         }
 
-        // Got this function from my Old JavaScript SD110 Final Project (memory card game)
-        // I only added on a numberOfPasses functionality
-        public static List<T> OldShuffle<T>(this List<T> array, int numberOfPasses = 1)
+
+        /// <summary>
+        ///     <para/>Got this function from my Old JavaScript SD110 Final Project (memory card game)
+        ///     <para/>I only added on a numberOfPasses functionality
+        /// </summary>
+        /// <typeparam name="T">Represents the type of element in List</typeparam>
+        /// <param name="list">Represents the list that will used to be shuffled</param>
+        /// <param name="numberOfPasses">Determines many times the array will be shuffled</param>
+        /// <returns></returns>
+        public static List<T> OldShuffle<T>(this List<T> list, int numberOfPasses = 1)
         {
-            int currentIndex = array.Count, randomIndex, counter = 0;
+            int currentIndex = list.Count, randomIndex, counter = 0;
             T temporaryValue;
             do
             {
                 while (currentIndex != 0)
                 {
-                    randomIndex = Random.Next(0, array.Count);
+                    randomIndex = Random.Next(0, list.Count);
                     currentIndex -= 1;
-                    temporaryValue = array[currentIndex];
-                    array[currentIndex] = array[randomIndex];
-                    array[randomIndex] = temporaryValue;
+                    temporaryValue = list[currentIndex];
+                    list[currentIndex] = list[randomIndex];
+                    list[randomIndex] = temporaryValue;
                 }
                 counter++;
             } while (counter < numberOfPasses);
 
-            return array;
+            return list;
         }
 
 
@@ -108,7 +115,7 @@ namespace PlayingCardsDeck
         /// </summary>
         /// <param name="list">
         ///     Array that will have its elements
-        ///     displayed on oneline in the console
+        ///     displayed in the console
         /// </param>
         /// <returns>
         ///     Returns passed in array
