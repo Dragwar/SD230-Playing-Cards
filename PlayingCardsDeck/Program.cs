@@ -10,8 +10,8 @@ namespace PlayingCardsDeck
         {
             Console.Title = "Deck consists of: (52 total playing cards), (4 suits), (13 playing cards per suit)";
 
-            Deck deck = new Deck();
-            foreach (var item in deck.Cards)
+            DeckManager deck = new DeckManager();
+            foreach (var item in deck.Deck)
             {
                 Console.WriteLine($"{item.Name} - {item.Suit} - {item.Value}");
             }

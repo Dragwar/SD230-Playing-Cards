@@ -14,22 +14,22 @@ namespace PlayingCardsDeck
     ///     <para/>- Cards can be dealt one at a time
     ///     <para/>- Cards can be dealt all at once
     /// </summary>
-    public class Deck
+    public class DeckManager
     {
-        public Deck(int numberOfInitialShuffles = 5)
+        public DeckManager(int numberOfInitialShuffles = 5)
         {
-            Cards = BuildDeck().Shuffle(numberOfInitialShuffles);
+            Deck = BuildDeck().Shuffle(numberOfInitialShuffles);
         }
 
         /// <summary>
         ///     Instead of using BuildDeck() to see the default deck you can use this property
         /// </summary>
-        public static List<PlayingCard> SortedPlayingCards { get; } = new List<PlayingCard>(BuildDeck());
+        public static List<PlayingCard> SortedDeck { get; } = new List<PlayingCard>(BuildDeck());
 
         /// <summary>
         ///     Represents all the playing cards in the deck
         /// </summary>
-        public List<PlayingCard> Cards { get; private set; }
+        public List<PlayingCard> Deck { get; private set; }
 
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace PlayingCardsDeck
         /// <param name="numberOfShuffles">(Optional) Represents the number of times the deck will be shuffled</param>
         public void ShuffleDeck([Optional] int? numberOfShuffles)
         {
-            Cards = Cards.Shuffle(numberOfShuffles);
+            Deck = Deck.Shuffle(numberOfShuffles);
         }
 
 
@@ -48,7 +48,7 @@ namespace PlayingCardsDeck
         /// <param name="numberOfShuffles">(Optional) Represents the number of times the deck will be shuffled</param>
         public void ResetToNewShuffledDeck([Optional] int? numberOfShuffles)
         {
-            Cards = BuildDeck().Shuffle(numberOfShuffles);
+            Deck = BuildDeck().Shuffle(numberOfShuffles);
         }
 
 
@@ -60,15 +60,15 @@ namespace PlayingCardsDeck
         /// <returns>Returns the card that was dealt</returns>
         public PlayingCard Deal([Optional] int? takeCardAt)
         {
-            if (Cards.Any())
+            if (Deck.Any())
             {
                 takeCardAt = takeCardAt ?? 0;
-                takeCardAt = takeCardAt > Cards.Count ? Cards.Count - 1 : takeCardAt;
-                PlayingCard card = Cards[takeCardAt.Value];
-                Cards.RemoveAt(takeCardAt.Value);
+                takeCardAt = takeCardAt > Deck.Count ? Deck.Count - 1 : takeCardAt;
+                PlayingCard card = Deck[takeCardAt.Value];
+                Deck.RemoveAt(takeCardAt.Value);
                 return card;
             }
-            else if (!Cards.Any())
+            else if (!Deck.Any())
             {
                 Console.WriteLine("No cards were left to deal!");
                 return null;
@@ -87,13 +87,13 @@ namespace PlayingCardsDeck
         /// <returns>Returns the current state of the Cards</returns>
         public List<PlayingCard> DealAll()
         {
-            if (Cards.Any())
+            if (Deck.Any())
             {
-                List<PlayingCard> cards = new List<PlayingCard>(Cards);
-                Cards.Clear();
+                List<PlayingCard> cards = new List<PlayingCard>(Deck);
+                Deck.Clear();
                 return cards;
             }
-            else if (!Cards.Any())
+            else if (!Deck.Any())
             {
                 Console.WriteLine("No cards were left to deal!");
                 return null;
@@ -113,7 +113,7 @@ namespace PlayingCardsDeck
         private static List<PlayingCard> BuildDeck()
         {
             Array suits = Enum.GetValues(typeof(SuitEnum));
-            Array cards = Enum.GetValues(typeof(CardsEnum));
+            Array cards = Enum.GetValues(typeof(CardNameValueEnum));
 
             List<PlayingCard> playingCards = new List<PlayingCard>();
 
@@ -121,7 +121,7 @@ namespace PlayingCardsDeck
             {
                 foreach (int card in cards)
                 {
-                    playingCards.Add(new PlayingCard((CardsEnum)card, (SuitEnum)suit));
+                    playingCards.Add(new PlayingCard((CardNameValueEnum)card, (SuitEnum)suit));
                 }
             }
 

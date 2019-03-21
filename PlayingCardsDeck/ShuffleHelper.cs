@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace PlayingCardsDeck
 {
-    public static class ArrayHelper
+    public static class ShuffleHelper
     {
         /// <summary>
         ///     Provides random numbers and
@@ -87,7 +87,7 @@ namespace PlayingCardsDeck
         /// <typeparam name="T">Represents the type of element in <paramref name="list"/></typeparam>
         /// <param name="list">Represents the <paramref name="list"/> that will used to be shuffled</param>
         /// <param name="numberOfPasses">Determines many times the <paramref name="list"/> will be shuffled</param>
-        /// <returns></returns>
+        /// <returns>Returns a shuffled List</returns>
         public static List<T> OldShuffle<T>(this List<T> list, int numberOfPasses = 1)
         {
             int currentIndex = list.Count, randomIndex, counter = 0;
