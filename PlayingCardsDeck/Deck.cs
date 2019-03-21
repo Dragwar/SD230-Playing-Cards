@@ -11,9 +11,9 @@ namespace PlayingCardsDeck
 
         public List<PlayingCard> Cards { get; set; }
 
-        public Deck()
+        public Deck(int numberOfShuffles = 5)
         {
-            Cards = BuildDeck();
+            Cards = BuildDeck().Shuffle(numberOfShuffles);
         }
 
 
