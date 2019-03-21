@@ -35,8 +35,12 @@ namespace PlayingCardsDeck
             return playingCards;
         }
 
+        public void ShuffleDeck([Optional] int? numberOfShuffles)
+        {
+            Cards = Cards.Shuffle(numberOfShuffles);
+        }
 
-        public void RebuildShuffledDeck(int? numberOfShuffles)
+        public void ResetToNewShuffledDeck([Optional] int? numberOfShuffles)
         {
             Cards = BuildDeck().Shuffle(numberOfShuffles);
         }
