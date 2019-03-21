@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.InteropServices;
 
@@ -114,17 +113,27 @@ namespace PlayingCardsDeck
         /// <returns>
         ///     Returns passed in array
         /// </returns>
-        public static List<T> Display<T>(this List<T> list)
+        public static List<T> Display<T>(this List<T> list, bool isWriteLine = false)
         {
-            for (int i = 0; i < list.Count; i++)
+            if (isWriteLine)
             {
-                if ((i + 1) == list.Count)
+                for (int i = 0; i < list.Count; i++)
                 {
-                    Console.Write("{0}\n\n", list[i]);
+                    Console.WriteLine(list[i]);
                 }
-                else
+            }
+            else
+            {
+                for (int i = 0; i < list.Count; i++)
                 {
-                    Console.Write("{0}, ", list[i]);
+                    if ((i + 1) == list.Count)
+                    {
+                        Console.Write("{0}\n\n", list[i]);
+                    }
+                    else
+                    {
+                        Console.Write("{0}, ", list[i]);
+                    }
                 }
             }
             return list;
